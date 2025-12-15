@@ -1,0 +1,237 @@
+table {
+  border-radius: 5px;
+  width: 100%;
+  min-width: 50vw;
+  
+  thead {
+    background-color: transparent;
+    th {
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+      color: white;
+      white-space: nowrap;
+      user-select: none;
+    }
+  }
+
+  tbody {
+    .user-icon{
+      background-color: rgba(255, 255, 255, 0.3);
+      color: white;
+      font-size: 1.1rem;
+      padding: 1rem;
+      margin-right: 1rem;
+      border-radius: 50%;
+      text-align: center;
+    }
+    
+    .day{
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      min-width: 80px;
+      
+      &:hover {
+        background: #f0f4ff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .available-indicator {
+        position: absolute;
+        bottom: 4px;
+        right: 4px;
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        font-size: 0.65rem;
+        color: #2e7d32;
+        
+        .dot {
+          width: 6px;
+          height: 6px;
+          background-color: #4caf50;
+          border-radius: 50%;
+          display: inline-block;
+        }
+        
+        .text {
+          font-weight: 500;
+          text-transform: lowercase;
+        }
+      }
+
+      .day-content {
+        font-size: 0.85rem;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &.unplanned {
+        background: #f5f5f5;
+        color: #999;
+        border: 1px dashed #ddd;
+        
+        .day-content {
+          font-size: 1.2rem;
+        }
+        
+        &:hover {
+          background: #efefef;
+          border-color: #ccc;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      &.has-feature {
+        background: #ffdabe;
+        color: #ec6602;
+        
+        &:hover {
+          background: #ffdabe;
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      &.free-day {
+        background: #e8f5e9;
+        color: #2e7d32;
+        
+        &:hover {
+          background: #c8e6c9;
+          box-shadow: 0 3px 10px rgba(46, 125, 50, 0.2);
+        }
+      }
+    }
+  }
+
+  // Tablet
+  @media (max-width: 1024px) {
+    min-width: 40vw;
+    
+    thead th {
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+    
+    tbody {
+      .user-icon {
+        font-size: 1rem;
+        padding: 0.75rem 0.3rem;
+      }
+      
+      .day {
+        padding: 8px;
+        min-width: 70px;
+        
+        .day-content {
+          font-size: 0.8rem;
+        }
+        
+        .available-indicator {
+          font-size: 0.6rem;
+          gap: 2px;
+          
+          .dot {
+            width: 5px;
+            height: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  // Mobile
+  @media (max-width: 768px) {
+    min-width: 100%;
+    font-size: 0.85rem;
+    
+    thead th {
+      padding: 0.75rem 0.5rem;
+      font-size: 0.75rem;
+    }
+    
+    tbody {
+      .user-icon {
+        font-size: 0.85rem;
+        padding: 1rem 0.2rem;
+        margin-right: 0.5rem;
+      }
+      
+      .day {
+        padding: 12px 6px;
+        min-width: 60px;
+        min-height: 60px;
+        
+        .day-content {
+          font-size: 0.7rem;
+        }
+        
+        .available-indicator {
+          font-size: 0.55rem;
+          bottom: 2px;
+          right: 2px;
+          
+          .text {
+            display: none;
+          }
+        }
+        
+        &.unplanned .day-content {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  // Small mobile
+  @media (max-width: 480px) {
+    thead th {
+      padding: 0.4rem;
+      font-size: 0.7rem;
+    }
+    
+    tbody {
+      .user-icon {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.2rem;
+        margin-right: 0.3rem;
+      }
+      
+      .day {
+        padding: 4px;
+        min-width: 50px;
+        
+        .day-content {
+          font-size: 0.65rem;
+        }
+      }
+    }
+  }
+}
+
+/* Optional: nice scrollbar for wide tables */
+::-webkit-scrollbar {
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f2f6;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c2c9d6;
+  border-radius: 10px;
+
+  &:hover {
+    background: #9ea6b4;
+  }
+}

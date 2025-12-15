@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Create New PI</h2>
+
+<mat-dialog-content>
+  <div class="form-container">
+    <mat-form-field appearance="outline">
+      <mat-label>PI Name</mat-label>
+      <input matInput [(ngModel)]="piData.piName" placeholder="e.g., PI202501" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Start Date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="piData.startDate" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Number of Iterations</mat-label>
+      <input matInput type="number" [(ngModel)]="piData.numberOfIterations" min="1" max="10" required>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onCreate()" 
+          [disabled]="!piData.piName || !piData.startDate || piData.numberOfIterations < 1">
+    Create PI
+  </button>
+</mat-dialog-actions>

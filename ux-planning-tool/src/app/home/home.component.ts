@@ -1,23 +1,27 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { CreatePiDialogComponent } from './dialogs/create-pi-dialog/create-pi-dialog.component';
-import { PiService } from './services/pi.service';
+import { CreatePiDialogComponent } from '../dialogs/create-pi-dialog/create-pi-dialog.component';
+import { PiService } from '../services/pi.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  selector: 'app-home',
+  imports: [ MatIconModule],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.scss'
 })
-export class AppComponent {
-  title = 'ux-planning-tool';
+export class HomeComponent {
 
   constructor(
-    private dialog: MatDialog,
     private router: Router,
+    private dialog: MatDialog,
     private piService: PiService
   ) {}
+
+  navigateToViewPIs(): void {
+    this.router.navigate(['/view-pis']);
+  }
 
   openCreatePIDialog(): void {
     const dialogRef = this.dialog.open(CreatePiDialogComponent, {

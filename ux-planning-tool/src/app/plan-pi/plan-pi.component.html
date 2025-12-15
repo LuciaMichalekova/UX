@@ -1,0 +1,22 @@
+  <div class="content">
+    <div class="header">{{ piName }}</div>
+    
+    <div class="wrapper">
+
+      <div class="iterations">
+        <div class="iteration" 
+             *ngFor="let iteration of iterations"
+             [class.selected]="isSelected(iteration)"
+             (click)="selectIteration(iteration)">
+          <span class="primary">{{ iteration.name }}</span>
+          <span>{{ formatDateRange(iteration) }}</span>
+        </div>
+      </div>
+
+      <div class="calendar">
+        <div class="pi-board" *ngIf="selectedIteration">
+          <app-iteration-calendar [iteration]="selectedIteration"></app-iteration-calendar>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,31 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>    
+      <th *ngFor="let day of days">{{ day }}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let member of teamMembers">
+      <td>
+        <div class="user-icon">
+          {{ member }}
+        </div>
+      </td>
+
+      <td class="day" 
+          *ngFor="let day of days"
+          [ngClass]="getDayClass(day, member)"
+          (click)="openDayPlanDialog(day, member)">
+        <div class="available-indicator" *ngIf="isUnplanned(day, member)">
+          <span class="dot"></span>
+          <span class="text">available</span>
+        </div>
+        <div class="day-content">
+          {{ getDayContent(day, member) }}
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
